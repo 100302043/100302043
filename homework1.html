@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>homework1</title>
+<!-- how to add bg in title-->
+<!--				background: url(http://f.cl.ly/items/2u1z0Y0I1U061j410F08/debut_light.png) repeat; -->
+<!-- HOW TO SEPERATE LIST http://codepen.io/patrikhjelm/pen/rtHoy-->
+		<style> 
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/960.css);
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/reset.css);
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/text.css);
+			@import url(http://fonts.googleapis.com/css?family=Rufina);
+			@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+			body {
+				cursor:crosshair;
+				font-family: 'Gilda Display', serif; 
+				background-color:white;
+			}
+			
+			div{
+			}
+			
+			table{
+				background: #F5EBFF;
+				-webkit-transition-property: opacity;
+				-webkit-transition-duration: .5s;
+    			opacity: .7; 	
+			}
+			table:hover{
+				opacity: 1;
+			}
+				
+	
+			td{
+				vertical-align: middle;
+				font-family: 'Rufina', serif;
+				font-size: 20px;
+			}
+			
+			td:nth-child(1) {
+  	 	 		background: white;
+  	 	 		width:150px;
+  	 	 		height:50px;
+  			}
+			  			
+  			td:nth-child(2) {
+  	 	 		width:500px;
+  	 	 		height:50px;
+  			}
+  			
+
+  			#linklist{
+  				font-family: 'Open Sans', sans-serif;
+  				font-size:16px;
+  				text-align: center; background: #FEFFCD ;
+  				margin-left:10px;
+  				padding: 0 0 5px 0;
+  				display:block; 
+  				-webkit-transition-property: opacity;
+				-webkit-transition-duration: .5s;
+    			opacity: .7; 				
+
+  			}
+			#linklist:hover{
+			    opacity: 1;
+			}
+  			#linklist li{
+
+  				display: block;
+ 
+  				margin-top: 6px;
+  			}
+  			#linkList h3 {
+			}		
+			#bottom{
+				background: url(http://f.cl.ly/items/2u1z0Y0I1U061j410F08/debut_light.png) repeat;
+			}
+			
+		</style>
+  
+	</head>
+
+	<body>
+		<div class="container_12">
+		
+		<div class="grid_12">
+			<header><h1 style="font: 36px/1.5 Verdana;">curriculum vitae</h1></header>
+			<h2 style="font: 25px Verdana;">Assignment 2</h2><hr>
+		</div>
+		<div class="grid_9">	
+			<p>				
+				<table>
+				  <tr>
+				    <td>NAME</td>
+				    <td>&nbsp&nbspMichelle Chou&nbsp&nbsp</td>
+				  </tr>
+				  <tr>
+				    <td>BIRTHDAY</td>
+				    <td>&nbsp&nbsp3/25&nbsp&nbsp</td>
+				  </tr>
+				  <tr>
+				    <td>Education</td>
+				    <td>&nbsp&nbspNational ChengChi University&nbsp&nbsp<br>&nbsp&nbspTaipei First Girl Senior High School&nbsp&nbsp</td>
+				  </tr>
+				  <tr>
+				    <td>EMAIL</td>
+				    <td>&nbsp&nbsp100302043@nccu.edu.tw&nbsp&nbsp</td>
+				  </tr>
+				  <tr>
+				    <td>SKILL</td>
+				    <td>&nbsp&nbspPhotoShop/LightRoom/ILLA&nbsp&nbsp<br>&nbsp&nbspChinese typing 80 words/mins&nbsp&nbsp</td>
+				  </tr>
+				  <tr>
+				    <td>HOBBY</td>
+				    <td>&nbsp&nbspPhotography&nbsp&nbsp</td>
+				  </tr>
+								  
+				</table>
+
+			</p>
+		</div>
+		<div class="grid_3" id="linklist">
+			<h3 class="select"></h3>
+				<span>Photo of me</span>
+				<ul>
+					<li> <a href="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/391281_398510326870179_547668994_n.jpg" width="300px" height="400px">photo 1</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-frc3/293313_511147862283386_1888665285_n.jpg" width="300px" height="400px">photo 2</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-ash3/576089_413632362066314_2139570868_n.jpg" width="300px" height="400px">photo 3</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-snc7/483773_511525375567105_1624605989_n.jpg" width="300px" height="400px">photo 4</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/321390_10151385646445708_6044353_n.jpg" width="300px" height="400px">photo 5</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/484829_462831673771377_38463144_n.jpg" width="300px" height="400px">photo 6</a></li>
+					</ul><li> <a href="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/551208_475450369132134_1904516370_n.jpg" width="300px" height="400px">photo 7</a></li>
+				</ul>
+
+
+<!--  <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/391281_398510326870179_547668994_n.jpg" width="300px" height="400px" /><p></p>
+	-->
+	
+		</div><hr>
+<!-- where is background QQQQQ why couldnt in tag-->
+		<div class="grid_12" id="bottom" >
+			cool
+		</div>
+<!-- where is background QQQQQ-->		
+			
+		<footer>
+	
+		</footer>
+		</div>
+	</body>
+</html>
