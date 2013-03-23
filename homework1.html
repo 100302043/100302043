@@ -67,18 +67,37 @@
 				-webkit-transition-duration: .5s;
     			opacity: .7; 				
   			}
-			#linklist ul{
+  			#linklist ul{
 				list-style:none;
 			}
-
+  			#linklist a{
+	  			-webkit-transition: all 0.2s ease;
+				-moz-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+	  		}
+	  		#linklist:hover a 
+			{
+				opacity: 1.0;
+     	    }
+	    	#linklist:hover ul:hover a {
+	    		opacity: 0.5;
+			}
+	    	#linklist:hover ul:hover a:hover {
+				opacity: 1;
+    		}
   			#linklist li a:link, #linklist li a:visited{			
   				text-align: center; background: #FEFFCD ;
+  				text-decoration:none;
   				display: block;
   				padding:5px 5px 5px 0.5em;
   				margin-top: 3px;
   			}
 			#linklist li a:hover{
 			    opacity: 1;
+			}
+			#linklist p{
+				text-align: center;
+				font-size: 15px
 			}
 			
 		</style> 
@@ -126,7 +145,7 @@
 		</div>
 		<div class="grid_3" id="linklist">
 			<h3 class="select"></h3>
-				<span>Photo of me</span>
+				<p>Photo of me</p>
 				<ul>
 					<li> <a href="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/391281_398510326870179_547668994_n.jpg" width="300px" height="400px">photo 1</a></li>
 					<li> <a href="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-frc3/293313_511147862283386_1888665285_n.jpg" width="300px" height="400px">photo 2</a></li>
@@ -142,11 +161,6 @@
 	-->
 	
 		</div><hr>
-<!-- where is background QQQQQ why couldnt in tag-->
-		<div class="grid_12" id="bottom" >
-			cool
-		</div>
-<!-- where is background QQQQQ-->		
 			
 		<footer>
 	
