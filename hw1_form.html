@@ -1,0 +1,49 @@
+﻿<html>
+	<head>
+		
+	</head>
+	<body>
+		<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dDhFdFBITDc2X3FaUGNPaGRWb29mNlE6MQ&ifq" method="POST">
+		
+		<h3>hidden_id</h3>
+		<input type="text" size="25">
+		<input type="hidden" name="entry.0.single" id="your_id" >
+  		
+  		<br>	
+			<p>	<h3>Gender</h3>	
+				<input type="radio" name="entry.1.group" value="boy" id="boy">
+				<label for="boy">boy</label><br>
+				<input type="radio" name="entry.1.group" value="girl" id="girl">
+				<label for="girl">girl</label>
+			</p>
+
+			<p><h3>Favorite</h3>
+				<input type="checkbox" name="entry.2.group" value="apple" id="apple">
+				<label for="apple">Apple</label><br>
+				<input type="checkbox" name="entry.2.group" value="banana" id="banana">
+				<label for="banana">Banana</label><br>
+				<input type="checkbox" name="entry.2.group" value="Lemon">
+				<label for="Lemon">Lemon</label><br>
+				<input type="checkbox" name="entry.2.group" value="Watermelon">
+				<label for="Watermelon">Watermelon</label><br>
+			</p>
+			<p>	<h3>Relationship</h3>
+				<select name="entry.3.single" id="relationship">		
+				<option value="single">single</option>
+				<option value="dating">dating</option>
+				<option value="married">married</option>
+				<option value="hard to explain">hard to explain</option>		
+			</select>
+			</p>
+			<p>
+			    <h3>email</h3>
+			    <input type="text" name="entry.4.single" id="email">
+  			</p>
+  			<p>
+  				<h3>Comments</h3>
+  				<textarea name="entry.5.single" id="comments" cols="30" rows="4"></textarea>
+  			</p>
+			 <input type="submit" value="送出" name="submit">
+		</form>
+	</body>
+</html>
