@@ -1,10 +1,50 @@
-﻿<html>
+
+<html>
 	<head>
 		
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Uncial+Antiqua);
+		@import url(http://fonts.googleapis.com/css?family=Marcellus+SC);
+
+		form {
+			padding-right: 100px;
+			padding-left: 100px;
+			font-family: 'Uncial Antiqua', cursive;
+		}
+
+		form label{
+			font-family: 'Marcellus SC', serif;			
+		}
+
+		h3{
+			background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.3)));
+			padding: 5px;
+			color: white;
+			-webkit-border-top-left-radius: 40px;
+			-webkit-border-bottom-right-radius: 40px;
+
+		}
+
+
+		input[type="checkbox"]:checked + label, input[type="radio"]:checked + label{
+
+		    color: #00c4ff;
+		    text-shadow: 0px 0px 10px #00c4ff;
+		    font-size: 20px;
+		    line-height: 20px;
+		}
+
+	</style>
+
 	</head>
 	<body>
+	
+
+
+
+
 		<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dDhFdFBITDc2X3FaUGNPaGRWb29mNlE6MQ&ifq" method="POST">
-		
+
 		<h3>hidden_id</h3>
 		<input type="text" size="25">
 		<input type="hidden" name="entry.0.single" id="your_id" >
