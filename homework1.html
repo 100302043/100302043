@@ -1,187 +1,185 @@
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<title>Facebook Friends Lists</title>
-		<link rel="stylesheet" type="text/css" href="CSS/FriendLists.css"/>
-		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	</head>
-	<body>
-		<!--第一步：請先在此加入Facebook應用程式開發所需要的的資源，請參考 https://developers.facebook.com/docs/reference/javascript/ -->
-
-		<div id="fb-root"></div>
-		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
-		<script>
-			var defaultPath = "http://www.facebook.com";
-			var uid;
-			var Access_Token;
-			var GroupID = new Array;
-			var GroupMember = new Array;
-			
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId: "399645503484445", // Your facebook app id
-					status: true,
-					cookie: true,
-					xfbml: true
-				});
-			}
-			
-			(function(d, s, id) {
- 			var js, fjs = d.getElementsByTagName(s)[0];
- 			if (d.getElementById(id)) return;
- 			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=399645503484445";
- 			fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
-
-		<script>
-			$(window).load(function () {
-				FB.login( loginDialog, {scope: 'read_friendlists, manage_friendlists, friends_birthday, 
-					friends_location'});
-
 		
-				// 第二步：請在此處加入FB.login，請參考 https://developers.facebook.com/docs/reference/javascript/FB.login/
-				// 我們需要在login完成後呼叫loginDialog這個function，並且在後方的授權項目中加入所需要的授權
-				// 因次在實作的過程中，必須先思考自己會需要用到哪些資訊
-				// 在這次的作業中，我們需要使用者的生日，居住地，讀取朋友清單，管理朋友清單（如果需要的話）
-				
-			});
+		<meta charset="utf-8" />
 
-				FB.getLoginStatus(function(response) {
-					if (response.status === 'connected') {
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-						uid = response.authResponse.userID;
-						Access_Token = response.authResponse.accessToken;						
+		<title>Assign2_100302043</title>
+		<img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash3/580494_475712942493545_789757079_n.jpg" width="200" height="200"/>
 
-						listFriends();//Check that if the user is connected with the facebook. If yes, call the next function.
-					} else if (response.status === 'not_authorized') {
-					// the user is logged in to Facebook, but not connected to the app
-						alert("Please authorize this app!");
-						window.location = defaultPath;
-					} else {
-					// the user isn't even logged in to Facebook.
-						alert("Please Login with your Facebook account!");
-						window.location = defaultPath;
-					}
-				});
+		<style> 
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/960.css);
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/reset.css);
+			@import url(http://cs.nccu.edu.tw/~jonesyu/960gs/code/css/text.css);
+			@import url(http://fonts.googleapis.com/css?family=Rufina);
+			@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+			img{
+				float:right;
+				display:block;
+				margin-right:100px;
+				border:3px #000;
+				padding:5px;
+				position: absolute;
+				right: 20px;
+				top:20px;
+			}
 
 			
-			/*
-				第三步：以FB.getLoginStatus來確認使用者的登入狀態，請參考 https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus/
-				*/
-				
+			body {
+				cursor:crosshair;
+				font-family: 'Gilda Display', serif; 
+				background-color:white;
 			}
 			
-			function listFriends(){
+			div{
+			}
+			
+			table{
+				background: #F5EBFF;
+				-webkit-transition-property: opacity;
+				-webkit-transition-duration: .5s;
+    			opacity: .7;
+    			
+			}
+			table:hover{
+				opacity: 1;
+			}
 				
-				//from now on we can decorate our website with the data related to the facebook.
-				//list all your friends.
-				/*
-				第四步：
-				*/
-				FB.api('/me/friends', function(response){
-				// 利用FB.api，取得使用者所有朋友
-					var i=0;
-					
-					while(response['data'][i] != null){
-					
-						var fId = response['data'][i]['id'];
-						var fName = response['data'][i]['name'];
-						$("<div onclick='changeInfo("+fId+");'><img src='https://graph.facebook.com/"+ fId + "/picture' /><span>"+fName+"</span></div>").appendTo("#FriendList");
+	
+			td{
+				vertical-align: middle;
+				font-family: 'Rufina', serif;
+				font-size: 20px;
+				padding-left: 20px;
+			}
+			
+			td:nth-child(1) {
+  	 	 		background: white;
+  	 	 		width:150px;
+  	 	 		height:50px;
+  			}
+			  			
+  			td:nth-child(2) {
+  	 	 		width:500px;
+  	 	 		height:50px;
+  			}
+  			
 
-						i++;
-					}
-				});
-				FB.api('/me/friendlists', function(res){
-					getFr(res);
-				});
-				
-				
-				
-				/*
-				第五步：
-				*/
-				//We have listed all your friends without any list categories.
-				//Try to use the api to retrieve our friend lists and display them in the website
-				
-					
+  			#linklist{
+  				font-family: 'Open Sans', sans-serif;
+  				font-size:20px;
+  				margin-left:10px;
+  				padding: 0 0 10px 0;
+  				display:block; 
+  				-webkit-transition-property: opacity;
+				-webkit-transition-duration: .5s;
+    			opacity: .7; 				
+  			}
+  			#linklist ul{
+				list-style:none;
+			}
+  			#linklist a{
+	  			-webkit-transition: all 0.2s ease;
+				-moz-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+	  		}
+	  		#linklist:hover a 
+			{
+				opacity: 1.0;
+     	    }
+	    	#linklist:hover ul:hover a {
+	    		opacity: 0.5;
+			}
+	    	#linklist:hover ul:hover a:hover {
+				opacity: 1;
+    		}
+  			#linklist li a:link, #linklist li a:visited{			
+  				text-align: center; background: #FEFFCD ;
+  				text-decoration:none;
+  				display: block;
+  				padding:5px 5px 5px 0.5em;
+  				margin-top: 3px;
+  			}
+			#linklist li a:hover{
+			    opacity: 1;
+			}
+			#linklist p{
+				text-align: center;
+				font-size: 15px
+			}
+			footer{
+				text-align: left;
+				font-family: arial,sans-serif;
 			}
 			
-			function getFr(temp){
-			
-				/*第六步*/
-				//use this to record the list number.
-				var i = 0;
-				
-				//create the div of the list and add all of the list into the right area.
-				while (temp["data"][i] != null){
-					GroupID[i] = temp["data"][i]["id"];//Save the id value of the group into an array.
-					
-					$("<div><h1>" + temp["data"][i]["name"] + "</h1><ul class='sortFB connectSort' id='"+ GroupID[i] +"'></ul></div>").appendTo("#GroupList");
-				
-					i++;
-				}
-					
-				var i = 0;
-				
-				getMembers(i);//start to display the existent members in the existent lists.
-				
-			}	
-			
-			function getMembers(num){
-			
-				//request the meber list, then call the insert function
-				if(GroupID[num] != null){
-				
-					/*請在下方FB.api內的第一個欄位，填入要找到哪些東西的對應名稱*/
-					FB.api('/'+GroupID[num]+'/members', function(res){
-						GroupMember[num] = res;
-						listMember(num);
-					});
-				}
-			}
-			
-			function listMember(num){
-				var a = 0;
-				
-				//You have saved the responsed JSON into the array GroupMember, thus you can start to use this array to insert data. 
-				while(GroupMember[num]["data"][a] != null){
-							
-					$("<div onclick='changeInfo("+GroupMember[num]["data"][a]["id"]+");'><img src='https://graph.facebook.com/"+ GroupMember[num]["data"][a]["id"] + "/picture' /><span>"+GroupMember[num]["data"][a]["name"]+"</span></div>").appendTo("#"+GroupID[num]);
-						
-					a++;
-				}
-				
-				getMembers(num+1);
-				
-			}
-			
-			function changeInfo(friends){
-				
-				FB.api("/"+friends, function(response) {
-					
-					$("#name").text(response.name);
-					$("#gender").text(response.gender);
-					$("#birth").text(response.birthday);
-					$("#loca").text(response.location.name);
-					
-				});
-				
-			}
-		</script>
+		</style> 
+  
+	</head>
 
-			<div id="FriendList">
-				<h1>Your Friends</h1>
-			</div>
-			<div id="infoDiv">
-				<span>姓名：</span><span id="name"></span><br/>
-				<span>性別：</span><span id="gender"></span><br/>
-				<span>生日：</span><span id="birth"></span><br/>
-				<span>住處：</span><span id="loca"></span><br/>
-			</div>
-			<div id="GroupList">
-			</div>
+	<body>
+		<div class="container_12">
+		<div class="grid_12"></div>
+		
+			<header>
+				<h1 style="font: 36px Verdana;"><br><br><br>curriculum vitae</h1>			
+				<h2 style="font: 25px Verdana;">Assignment 2</h2><hr>
+			</header>
+		</div>
+		
+		<div class="grid_9">	
+			<p>				
+				<table>
+				  <tr>
+				    <td>NAME</td>
+				    <td>Michelle Chou</td>
+				  </tr>
+				  <tr>
+				    <td>BIRTHDAY</td>
+				    <td>3/25</td>
+				  </tr>
+				  <tr>
+				    <td>Education</td>
+				    <td>National ChengChi University<br>&nbsp-Money and Banking<br>&nbsp-Degital Contents and Technologies</td>
+				  </tr>
+				  <tr>
+				    <td>EMAIL</td>
+				    <td>100302043@nccu.edu.tw</td>
+				  </tr>
+				  <tr>
+				    <td>SKILL</td>
+				    <td>PhotoShop/LightRoom/ILLA/office</td>
+				  </tr>
+				  <tr>
+				    <td>HOBBY</td>
+				    <td>Photography/Video Edit</td>
+				  </tr>
+								  
+				</table>
+
+			</p>
+		</div>
+		<div class="grid_3" id="linklist">
+			<h3 class="select"></h3>
+				<p>Photo of me</p>
+				<ul>
+					<li> <a href="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash4/391281_398510326870179_547668994_n.jpg" width="300px" height="400px">photo 1</a></li>
+					<li> <a href="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-frc3/293313_511147862283386_1888665285_n.jpg" width="300px" height="400px">photo 2</a></li>
+					<li> <a href="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-ash3/576089_413632362066314_2139570868_n.jpg" width="300px" height="400px">photo 3</a></li>
+					<li> <a href="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-snc7/483773_511525375567105_1624605989_n.jpg" width="300px" height="400px">photo 4</a></li>
+					<li> <a href="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/321390_10151385646445708_6044353_n.jpg" width="300px" height="400px">photo 5</a></li>
+					<li> <a href="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/484829_462831673771377_38463144_n.jpg" width="300px" height="400px">photo 6</a></li>
+					<li> <a href="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/551208_475450369132134_1904516370_n.jpg" width="300px" height="400px">photo 7</a></li>
+				</ul>
+		</div><hr>
+			
+		<footer>
+			&copy;2013spring by Michelle Chou
+		</footer>
+		</div>
 	</body>
 </html>
